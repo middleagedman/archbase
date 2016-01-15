@@ -1,4 +1,4 @@
-FROM base/archlinux:2015.06.01
+FROM base/archlinux:latest
 MAINTAINER middleagedman
 
 # additional files
@@ -11,8 +11,7 @@ ADD install.sh /root/install.sh
 #############
 
 # run bash script to update base image, set locale, install supervisor and cleanup
-RUN chmod +x /root/install.sh && \
-	/bin/bash /root/install.sh
+RUN chmod +x /root/install.sh && /bin/bash /root/install.sh
 
 # env
 #####
@@ -21,7 +20,7 @@ RUN chmod +x /root/install.sh && \
 ENV HOME /home/nobody
 
 # set environment variable for terminal
-ENV TERM xterm
+ENV TERM vt220
 
 # set environment variables for language
 ENV LANG en_US.UTF-8
