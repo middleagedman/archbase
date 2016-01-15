@@ -1,5 +1,5 @@
 FROM base/archlinux:2015.06.01
-MAINTAINER binhex
+MAINTAINER middleagedman
 
 # additional files
 ##################
@@ -24,7 +24,7 @@ ENV HOME /home/nobody
 ENV TERM xterm
 
 # set environment variables for language
-ENV LANG en_GB.UTF-8
+ENV LANG en_US.UTF-8
 
 # additional files
 ##################
