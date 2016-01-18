@@ -15,3 +15,6 @@ Arch Linux base image based upon image available on Docker Hub https://hub.docke
 N/A
 
 [Support forum](http://lime-technology.com/forum/index.php?topic=38055.0)
+
+
+Includes supervisor pkg and AUR pkg ncurses5-compat-libs
