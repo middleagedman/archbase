@@ -13,17 +13,11 @@ ADD install.sh /root/install.sh
 # run bash script to update base image, set locale, install supervisor and cleanup
 RUN chmod +x /root/install.sh && /bin/bash /root/install.sh
 
-# env
+#
 #####
 
-# set environment variables for user nobody
-ENV HOME /home/nobody
-
-# set environment variable for terminal
-ENV TERM vt220
-
-# set environment variables for language
-ENV LANG en_US.UTF-8
+# set environment variables
+ENV HOME=/home/nobody TERM=vt220 LANG=en_US.UTF-8
 
 # additional files
 ##################

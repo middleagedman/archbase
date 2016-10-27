@@ -6,17 +6,17 @@ set -e
 export PATH=/usr/bin:/usr/sbin:$PATH
 
 # update arch repo list with USA mirrors
-curl -o /etc/pacman.d/mirrorlist "https://www.archlinux.org/mirrorlist/?country=US&use_mirror_status=on" && sed -i 's/^#//' /etc/pacman.d/mirrorlist
+curl -so /etc/pacman.d/mirrorlist "https://www.archlinux.org/mirrorlist/?country=US&use_mirror_status=on" && sed -i 's/^#//' /etc/pacman.d/mirrorlist
 
 # Get keys and upgrade base to latest
-pacman -S --noprogressbar --noconfirm archlinux-keyring
 pacman-key --populate
 pacman-key --refresh-keys
 pacman -Sy --noprogressbar --noconfirm
-pacman -S --force openssl --noconfirm
-pacman -S pacman --noprogressbar --noconfirm
-pacman-db-upgrade
-pacman -Syyu --noprogressbar --noconfirm
+pacman -S --force --noconfirm openssl
+pacman -S --noprogressbar --noconfirm archlinux-keyring
+pacman -S --noprogressbar --noconfirm pacman
+pacman-db-upgrade 
+pacman -Su --noprogressbar --noconfirm
 
 # set locale
 echo en_US.UTF-8 UTF-8 > /etc/locale.gen
@@ -33,10 +33,6 @@ usermod -a -G nobody nobody
 mkdir -p /home/nobody
 chown -R nobody:users /home/nobody
 chmod -R 775 /home/nobody
-
-# force re-install of ncurses 6.x with 5.x backwards compatibility (can be removed onced all apps have switched over to ncurses 6.x)
-curl -o /tmp/ncurses5-compat-libs-6.0-2-x86_64.pkg.tar.xz -L https://github.com/binhex/arch-packages/releases/download/ncurses5-compat-libs-6.0-2/ncurses5-compat-libs-6.0-2-x86_64.pkg.tar.xz
-pacman -U /tmp/ncurses5-compat-libs-6.0-2-x86_64.pkg.tar.xz --noconfirm
 
 # install supervisor
 pacman -S supervisor --noconfirm
