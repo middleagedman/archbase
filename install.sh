@@ -9,7 +9,7 @@ export PATH=/usr/bin:/usr/sbin:$PATH
 curl -o /etc/pacman.d/mirrorlist "https://www.archlinux.org/mirrorlist/?country=US&use_mirror_status=on" && sed -i 's/^#//' /etc/pacman.d/mirrorlist
 
 # Get keys and upgrade base to latest
-pacman -Sy archlinux-keyring
+pacman -S --noprogressbar --noconfirm archlinux-keyring
 pacman-key --populate
 pacman-key --refresh-keys
 pacman -Sy --noprogressbar --noconfirm
