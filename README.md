@@ -18,4 +18,3 @@ N/A
 
 
 Includes supervisor pkg and AUR pkg ncurses5-compat-libs
- 
